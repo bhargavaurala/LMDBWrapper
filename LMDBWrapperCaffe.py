@@ -32,4 +32,4 @@ class LMDBWrapperCaffe(LMDBWrapper):
 		datum.label = label
 		key = self.keygen(self.idx) if idx is None else self.keygen(idx)
 		self.idx += 1 if idx is None else 0
-		self.write(key, datum.SerializeToString())
+		self.write(key = key, value = datum.SerializeToString())
