@@ -31,5 +31,5 @@ class LMDBWrapperCaffe(LMDBWrapper):
 		datum.data = img.tobytes()
 		datum.label = label
 		key = self.keygen(self.idx) if idx is None else self.keygen(idx)
-		self.idx += 1 if idx is None else 0
+		self.idx = self.idx + 1 if idx is None else self.idx
 		self.write(key = key, value = datum.SerializeToString())
