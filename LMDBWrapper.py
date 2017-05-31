@@ -20,10 +20,10 @@ class LMDBWrapperBase(object):
 			value = txn.get(key)
 		return value
 
-	def write(self, key = None, idx = None, value = ''):		
+	def write(self, key = None, value = ''):		
 		self.idx += 1 if key is None and idx is None else 0
 		key = self.keygen(self.idx) if key is None else key		
-		key = self.keygen(idx) if idx is not None else key
+		# key = self.keygen(idx) if idx is not None else key
 		try:	
 			with self.env.begin(write = True) as txn:
 				txn.put(key, value)								
